@@ -50,14 +50,25 @@ const knowDisplay = (info) => {
 
 }
 const indivisualPhone = (phone) => {
+    console.log(phone)
+    //the consition is,, if the release date is not found
     if (phone.releaseDate === '') {
         showIndivisualInfo.innerHTML = ''
         const singaldiv = document.createElement('div')
         singaldiv.classList.add('col-md-12')
         singaldiv.innerHTML = `
-        <img width='400px' src='${phone.image}'/>
-        <h2>${phone.name}</h2>
-        <h2>${phone.releaseDate.innerText = 'No ReleaseDate found'}</h2>
+        <div class="card mx-auto" style="width: 18rem;">
+            <img src="${phone.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h2>${phone.name}</h2>
+                <h2> ${phone.releaseDate.innerText = 'No ReleaseDate found'}</h2>
+                <p>chipset: ${phone.mainFeatures.chipSet}
+                <p>displaySize: ${phone.mainFeatures.displaySize}
+                <p>memory: ${phone.mainFeatures.memory}
+                <p>storage: ${phone.mainFeatures.storage}
+                </p>
+            </div>
+        </div>
         `
         showIndivisualInfo.appendChild(singaldiv)
     }
@@ -66,10 +77,20 @@ const indivisualPhone = (phone) => {
         const singaldiv = document.createElement('div')
         singaldiv.classList.add('col-md-12')
         singaldiv.innerHTML = `
-        <img width='400px' src='${phone.image}'/>
-        <h2>${phone.name}</h2>
-        <h2> ${phone.releaseDate}</h2>
+        <div class="card mx-auto" style="width: 18rem;">
+            <img src="${phone.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h2>${phone.name}</h2>
+                <h2> ${phone.releaseDate}</h2>
+                <p>chipset: ${phone.mainFeatures.chipSet}
+                <p>displaySize: ${phone.mainFeatures.displaySize}
+                <p>memory: ${phone.mainFeatures.memory}
+                <p>storage: ${phone.mainFeatures.storage}
+                </p>
+            </div>
+        </div>
         `
         showIndivisualInfo.appendChild(singaldiv)
     }
 }
+
