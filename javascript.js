@@ -5,16 +5,19 @@ const loadData = () => {
     inputValue.value = '';
     fetch(`https://openapi.programming-hero.com/api/phones?search=${inputValueText}`)
         .then(res => res.json())
-        .then(data => displayPhones(data.data))
+        .then(data => displayPhones(data.data.slice(0, 20)))
 }
 const errorMessage = document.getElementById("error")
 const sectionDiv = document.getElementById('section-phone')
+const showIndivisualInfo = document.getElementById('indivisual-image')
 const displayPhones = (phones) => {
     if (phones.length === 0) {
         errorMessage.innerText = "not found product"
         sectionDiv.innerHTML = ''
+        showIndivisualInfo.innerHTML = ''
     }
     else {
+        showIndivisualInfo.innerHTML = ''
         errorMessage.innerHTML = ''
         sectionDiv.innerHTML = ''
         phones.forEach(element => {
@@ -42,8 +45,26 @@ const knowDisplay = (info) => {
 
 }
 const indivisualPhone = (phone) => {
-    const showIndivisualInfo = document.getElementById('indivisual-image')
-
-
-    console.log(phone)
+    if (phone.releaseDate === '') {
+        showIndivisualInfo.innerHTML = ''
+        const singaldiv = document.createElement('div')
+        singaldiv.classList.add('col-md-12')
+        singaldiv.innerHTML = `
+        <img width='400px' src='${phone.image}'/>
+        <h2>${phone.name}</h2>
+        <h2>${phone.releaseDate.innerText = 'Release date not found'}</h2>
+        `
+        showIndivisualInfo.appendChild(singaldiv)
+    }
+    else {
+        showIndivisualInfo.innerHTML = ''
+        const singaldiv = document.createElement('div')
+        singaldiv.classList.add('col-md-12')
+        singaldiv.innerHTML = `
+        <img width='400px' src='${phone.image}'/>
+        <h2>${phone.name}</h2>
+        <h2> ${phone.releaseDate}</h2>
+        `
+        showIndivisualInfo.appendChild(singaldiv)
+    }
 }
