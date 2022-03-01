@@ -7,10 +7,17 @@ const showIndivisualInfo = document.getElementById('indivisual-image')
 const loadData = () => {
     const inputValue = document.getElementById('input-text')
     const inputValueText = inputValue.value
-    inputValue.value = '';
-    fetch(`https://openapi.programming-hero.com/api/phones?search=${inputValueText}`)
-        .then(res => res.json())
-        .then(data => displayPhones(data.data.slice(0, 20)))
+    //validation except numbers
+    if (inputValueText >= 0 || inputValueText <= 0) {
+        errorMessage.innerText = "no product found "
+    }
+    else {
+        inputValue.value = '';
+        fetch(`https://openapi.programming-hero.com/api/phones?search=${inputValueText}`)
+            .then(res => res.json())
+            .then(data => displayPhones(data.data.slice(0, 20)))
+    }
+
 }
 
 const displayPhones = (phones) => {
@@ -26,10 +33,11 @@ const displayPhones = (phones) => {
         sectionDiv.innerHTML = ''
         phones.forEach(element => {
             const displayDiv = document.createElement('div')
-            displayDiv.classList.add('col-md-4')
+            displayDiv.classList.add('col-md-6')
+            displayDiv.classList.add('col-sm-12')
             displayDiv.classList.add('mb-5')
             displayDiv.innerHTML = `
-            <div class="card" style="width: 18rem;">
+            <div class="card text-center mx-auto" style="width: 18rem;">
                 <img src="${element.image}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="">${element.phone_name}</h5>
@@ -66,6 +74,13 @@ const indivisualPhone = (phone) => {
                 <p><h5>memory:</h5> ${phone.mainFeatures.memory}
                 <p><h5>storage:</h5> ${phone.mainFeatures.storage}
                 <p><h5>sensor:</h5> ${phone.mainFeatures.sensors}
+                <p><h4>others:</h4>
+                <p><h5>Bluetooth:</h5></p>${phone.others.Bluetooth}
+                <p><h5>GPS:</h5></p>${phone.others.GPS}
+                <p><h5>NFC:</h5></p>${phone.others.NFC}
+                <p><h5>Radio:</h5></p>${phone.others.Radio}
+                <p><h5>USB:</h5></p>${phone.others.USB}
+                <p><h5>WLAN:</h5></p>${phone.others.WLAN}
                 </p>
             </div>
         </div>
@@ -73,7 +88,6 @@ const indivisualPhone = (phone) => {
         showIndivisualInfo.appendChild(singaldiv)
     }
     else {
-        console.log(phone.mainFeatures.sensors)
         showIndivisualInfo.innerHTML = ''
         const singaldiv = document.createElement('div')
         singaldiv.classList.add('col-md-12')
@@ -88,6 +102,13 @@ const indivisualPhone = (phone) => {
                 <p><h5>memory:</h5> ${phone.mainFeatures.memory}
                 <p><h5>storage:</h5> ${phone.mainFeatures.storage}
                 <p><h5>sensor:</h5> ${phone.mainFeatures.sensors}
+                <p><h4>others:</h4>
+                <p><h5>Bluetooth:</h5></p>${phone.others.Bluetooth}
+                <p><h5>GPS:</h5></p>${phone.others.GPS}
+                <p><h5>NFC:</h5></p>${phone.others.NFC}
+                <p><h5>Radio:</h5></p>${phone.others.Radio}
+                <p><h5>USB:</h5></p>${phone.others.USB}
+                <p><h5>WLAN:</h5></p>${phone.others.WLAN}
                 </p>   
             </div>
         </div>
@@ -95,4 +116,3 @@ const indivisualPhone = (phone) => {
         showIndivisualInfo.appendChild(singaldiv)
     }
 }
-/* <h5></h5> */
