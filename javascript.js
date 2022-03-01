@@ -14,7 +14,7 @@ const loadData = () => {
 }
 
 const displayPhones = (phones) => {
-    //consition is when products is not found the storage,the message will show
+    //error handle, consition is when products is not found the storage,the message will show
     if (phones.length === 0) {
         errorMessage.innerText = "no product found "
         sectionDiv.innerHTML = ''
@@ -50,7 +50,6 @@ const knowDisplay = (info) => {
 
 }
 const indivisualPhone = (phone) => {
-    console.log(phone)
     //the consition is,, if the release date is not found
     if (phone.releaseDate === '') {
         showIndivisualInfo.innerHTML = ''
@@ -62,10 +61,11 @@ const indivisualPhone = (phone) => {
             <div class="card-body">
                 <h2>${phone.name}</h2>
                 <h2> ${phone.releaseDate.innerText = 'No ReleaseDate found'}</h2>
-                <p>chipset: ${phone.mainFeatures.chipSet}
-                <p>displaySize: ${phone.mainFeatures.displaySize}
-                <p>memory: ${phone.mainFeatures.memory}
-                <p>storage: ${phone.mainFeatures.storage}
+                <p><h5>chipset:</h5> ${phone.mainFeatures.chipSet}
+                <p><h5>displaySize:</h5> ${phone.mainFeatures.displaySize}
+                <p><h5>memory:</h5> ${phone.mainFeatures.memory}
+                <p><h5>storage:</h5> ${phone.mainFeatures.storage}
+                <p><h5>sensor:</h5> ${phone.mainFeatures.sensors}
                 </p>
             </div>
         </div>
@@ -73,6 +73,7 @@ const indivisualPhone = (phone) => {
         showIndivisualInfo.appendChild(singaldiv)
     }
     else {
+        console.log(phone.mainFeatures.sensors)
         showIndivisualInfo.innerHTML = ''
         const singaldiv = document.createElement('div')
         singaldiv.classList.add('col-md-12')
@@ -82,15 +83,16 @@ const indivisualPhone = (phone) => {
             <div class="card-body">
                 <h2>${phone.name}</h2>
                 <h2> ${phone.releaseDate}</h2>
-                <p>chipset: ${phone.mainFeatures.chipSet}
-                <p>displaySize: ${phone.mainFeatures.displaySize}
-                <p>memory: ${phone.mainFeatures.memory}
-                <p>storage: ${phone.mainFeatures.storage}
-                </p>
+                <p><h5>chipset:</h5> ${phone.mainFeatures.chipSet}
+                <p><h5>displaySize:</h5> ${phone.mainFeatures.displaySize}
+                <p><h5>memory:</h5> ${phone.mainFeatures.memory}
+                <p><h5>storage:</h5> ${phone.mainFeatures.storage}
+                <p><h5>sensor:</h5> ${phone.mainFeatures.sensors}
+                </p>   
             </div>
         </div>
         `
         showIndivisualInfo.appendChild(singaldiv)
     }
 }
-
+/* <h5></h5> */
