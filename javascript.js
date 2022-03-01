@@ -33,7 +33,9 @@ const displayPhones = (phones) => {
         sectionDiv.innerHTML = ''
         phones.forEach(element => {
             const displayDiv = document.createElement('div')
+            //responsive in mobile and desktop
             displayDiv.classList.add('col-md-6')
+            displayDiv.classList.add('col-lg-4')
             displayDiv.classList.add('col-sm-12')
             displayDiv.classList.add('mb-5')
             displayDiv.innerHTML = `
